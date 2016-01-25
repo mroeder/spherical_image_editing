@@ -39,20 +39,18 @@ def batch_transform_frames(in_dirname, out_dirname, M_func, frame_num_range = No
 
   print('done')
 
-######## Test 
+###### Apply transformations to a directory of frames
+
+### Assume you have a directory called "foo_in" that has 1920x960 png frame images called something like 
+### "frame_000.png", "frame_001.png", ... "frame_099.png", and a directory "foo_out" you want to save 
+### images to. Then, first define the transformation function (as a function of time):
+
+def my_zoom(t):
+  return zoom_in_on_pixel_coords((960,480), 1 + up_plateau_down(t), x_size = 1920)
+
+######## Test
 
 if __name__ == "__main__":
-
-  ###### Apply transformations to a directory of frames
-
-  ### Assume you have a directory called "foo_in" that has 1920x960 png frame images called something like 
-  ### "frame_000.png", "frame_001.png", ... "frame_099.png", and a directory "foo_out" you want to save 
-  ### images to. Then, first define the transformation function (as a function of time):
-
-  def my_zoom(t):
-    return zoom_in_on_pixel_coords((960,480), 1 + up_plateau_down(t), x_size = 1920)
-
-  ### Then run the batch function
 
   ### Then run the batch function
 
